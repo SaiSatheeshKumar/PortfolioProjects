@@ -11,15 +11,6 @@ From PortfolioProject.dbo.NashvilleHousing
 -- Standardize Date Format
 
 
-Select saleDateConverted, CONVERT(Date,SaleDate)
-From PortfolioProject.dbo.NashvilleHousing
-
-
-Update NashvilleHousing
-SET SaleDate = CONVERT(Date,SaleDate)
-
--- If it doesn't Update properly
-
 ALTER TABLE NashvilleHousing
 Add SaleDateConverted Date;
 
@@ -33,7 +24,6 @@ SET SaleDateConverted = CONVERT(Date,SaleDate)
 
 Select *
 From PortfolioProject.dbo.NashvilleHousing
---Where PropertyAddress is null
 order by ParcelID
 
 
@@ -58,16 +48,15 @@ Where a.PropertyAddress is null
 
 -- Breaking out Address into Individual Columns (Address, City, State)
 
+-- Property Address
 
 Select PropertyAddress
 From PortfolioProject.dbo.NashvilleHousing
---Where PropertyAddress is null
---order by ParcelID
+
 
 SELECT
 SUBSTRING(PropertyAddress, 1, CHARINDEX(',', PropertyAddress) -1 ) as Address
 , SUBSTRING(PropertyAddress, CHARINDEX(',', PropertyAddress) + 1 , LEN(PropertyAddress)) as Address
-
 From PortfolioProject.dbo.NashvilleHousing
 
 
@@ -84,6 +73,7 @@ Add PropertySplitCity Nvarchar(255);
 Update NashvilleHousing
 SET PropertySplitCity = SUBSTRING(PropertyAddress, CHARINDEX(',', PropertyAddress) + 1 , LEN(PropertyAddress))
 
+-- Owner Address
 
 Select *
 From PortfolioProject.dbo.NashvilleHousing
@@ -120,10 +110,6 @@ Add OwnerSplitState Nvarchar(255);
 
 Update NashvilleHousing
 SET OwnerSplitState = PARSENAME(REPLACE(OwnerAddress, ',', '.') , 1)
-
-
-Select *
-From PortfolioProject.dbo.NashvilleHousing
 
 
 --------------------------------------------------------------------------------------------------------------------------
