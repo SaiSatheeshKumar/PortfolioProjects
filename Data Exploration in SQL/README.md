@@ -1,6 +1,3 @@
-Readme
-
-
 Covid 19 Power BI Dashboard: 
 
 https://app.powerbi.com/view?r=eyJrIjoiMDM1ZTdkZjMtNmMzYi00YTMxLTg4OWEtMWM3OTNiZjc0ZDZmIiwidCI6ImRlMTI4MmFhLWJmMzctNGZhNy1hNmYzLWZkZWI1NmMyZmEwMiJ9
